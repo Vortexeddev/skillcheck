@@ -120,7 +120,7 @@ export function renderBadgeMarkdown(report: SkillCheckReport): string {
 export function renderRegistry(entries: RegistryEntry[], query?: string): string {
   if (entries.length === 0) {
     return "\n  No skills matched. Try a broader query, or add yours:\n" +
-      "  https://github.com/skillcheck/skillcheck#adding-a-skill\n";
+      "  https://github.com/skillcheck/skillcheck/blob/main/CONTRIBUTING.md\n";
   }
 
   const rows = entries.map((e) => {
