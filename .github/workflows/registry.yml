@@ -1,0 +1,41 @@
+name: Registry
+
+# Regenerates data/registry.ts from the live GitHub API and commits the result.
+# This is what keeps the registry a living directory instead of a stale awesome-list.
+
+on:
+  schedule:
+    - cron: "17 4 * * 1" # Mondays 04:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+
+      - name: Rebuild registry (verified mode)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run registry:build
+
+      - name: Commit if changed
+        run: |
+          git config user.name "skillcheck registry bot"
+          git config user.email "registry@skillcheck.local"
+          git add data/registry.ts
+          if git diff --cached --quiet; then
+            echo "No registry changes."
+          else
+            git commit -m "chore(registry): refresh from GitHub API"
+            git push
+          fi

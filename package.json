@@ -1,0 +1,55 @@
+{
+  "name": "skillcheck",
+  "version": "0.1.0",
+  "description": "Can you legally ship this agent skill? License + spec checker for the 22,000+ SKILL.md repos out there.",
+  "keywords": [
+    "agent-skills",
+    "claude-skills",
+    "skill",
+    "license",
+    "spdx",
+    "compliance",
+    "audit",
+    "claude-code",
+    "cursor",
+    "codex",
+    "opencode",
+    "agentskills"
+  ],
+  "license": "MIT",
+  "author": "skillcheck contributors",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skillcheck/skillcheck.git"
+  },
+  "homepage": "https://github.com/skillcheck/skillcheck#readme",
+  "type": "module",
+  "bin": {
+    "skillcheck": "dist/index.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "data",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18.17"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p scripts/tsconfig.json",
+    "test": "tsx --test test/*.test.ts",
+    "registry:build": "tsx scripts/build-registry.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "tsup": "^8.3.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "@types/node": "^22.10.2"
+  }
+}
