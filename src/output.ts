@@ -77,7 +77,7 @@ export function renderReport(report: SkillCheckReport): string {
     const h = report.health;
     const parts = [
       `★ ${h.stars.toLocaleString("en-US")}`,
-      `⑂ ${h.forks.toLocaleString("en-US")}`,
+      `${h.forks.toLocaleString("en-US")} forks`,
       h.daysSincePush !== null ? `pushed ${h.daysSincePush}d ago` : "push unknown",
       h.archived ? c.red("ARCHIVED") : null,
     ].filter(Boolean);
