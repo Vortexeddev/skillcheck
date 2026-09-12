@@ -1,51 +1,53 @@
 # Launch plan — skillcheck
 
-Cilj: zvezdice od ljudi, ki jih dejansko uporabijo. Ne od naključnih mimoidočih.
+Goal: stars from people who actually use the thing. Not from drive-bys.
 
 ---
 
-## Positioning (nauči se to na pamet, rabiš jo povsod)
+## Positioning (learn this by heart, you need it everywhere)
 
-> `npx skills` ti **namesti** skill. `SkillSpector` ti ga **skenira za varnost**.
-> **`skillcheck` ti pove, ali ga sploh smeš.**
+> `npx skills` **installs** the skill. `SkillSpector` **scans** it for security.
+> **`skillcheck` tells you whether you are allowed to use it at all.**
 >
-> 22.678 repozitorijev ima oznako `agent-skills`. Anthropicov uradni repo s 175.921 zvezdicami
-> **nima LICENSE datoteke** — kar pravno pomeni "vse pravice pridržane". 16 % vzorca nazadnje
-> posodobljenih skill-ov je brez licence, 21 % jih ima nestandardizirano.
+> 22,678 repositories carry the `agent-skills` topic. Anthropic's official repo, 175,921 stars,
+> has **no LICENSE file** — which under copyright law means "all rights reserved". In a sample of
+> the most recently updated skills, 16% had no license and 21% had one GitHub could not classify.
 
-**Nikoli** ne trdi, da tekmuješ z Vercelom. Ti si korak *pred* njim. To je edini razlog, da te
-ne bodo ignorirali — in edini razlog, da te bodo skill avtorji imeli radi.
+**Never** claim you are competing with Vercel. You are the step *before* them. That is the only
+reason people will not ignore you, and the only reason skill authors will like you.
 
-**Glavni "aha" stavek:** *"Your agent just installed 14 skills. You have no idea what any of them
+**The main "aha" line:** *"Your agent just installed 14 skills. You have no idea what any of them
 allow you to do."*
 
 ---
 
-## Pred launchom (naredi ti — jaz ne morem)
+## Before launch (yours to do — I cannot)
 
-- [ ] **Ustvari GitHub repo** `skillcheck/skillcheck` (ali `<tvoj-user>/skillcheck`)
-- [ ] **Pushaj kodo** — glej `NEXT-STEPS.md` za točne ukaze
-- [ ] **Zamenjaj placeholder URL-je**: v `README.md`, `package.json` (`repository`, `homepage`),
-      `CONTRIBUTING.md` in `src/output.ts` (badge link) je `github.com/skillcheck/skillcheck`
-- [ ] **`npm publish`** — potreben tvoj npm račun: `npm login && npm publish --access public`
-      (ime `skillcheck` je prosto, preveril sem)
-- [ ] **GitHub topics** (to je SEO na GitHubu, res vpliva):
+- [ ] **Create the GitHub repo** `skillcheck/skillcheck` (or `<your-user>/skillcheck`)
+- [ ] **Push the code** — exact commands in `NEXT-STEPS.md`
+- [ ] **Replace the placeholder URLs**: `README.md`, `package.json` (`repository`, `homepage`),
+      `CONTRIBUTING.md` and `src/output.ts` (badge link) all say `github.com/skillcheck/skillcheck`.
+      `./scripts/set-repo.sh <your-user>/skillcheck` fixes all of them at once.
+- [ ] **`npm publish`** — needs your npm account: `npm login && npm publish --access public`
+      (the name `skillcheck` is free, verified)
+- [ ] **GitHub topics** (this is SEO inside GitHub, it really matters):
       `agent-skills` `claude-skills` `license` `spdx` `compliance` `cli` `security`
       `claude-code` `cursor` `codex` `opencode` `llm` `devtools`
-- [ ] **Dodaj repo v `awesome-claude-code` in `VoltAgent/awesome-agent-skills` preko PR** —
-      to so trajni dofollow backlinki z 34k–54k ⭐ strani. Najboljši brezplačen vir začetnega prometa.
+- [ ] **Submit the repo to `awesome-claude-code` and `VoltAgent/awesome-agent-skills` via PR** —
+      those are permanent dofollow backlinks from 34k–54k ★ pages. The best free source of early
+      traffic there is.
 
 ---
 
-## Dan 1 — Show HN
+## Day 1 — Show HN
 
-Naslov (edina stvar, ki jo 90 % ljudi prebere):
+Title (the only thing 90% of people read):
 
 ```
 Show HN: skillcheck – 22k agent skills on GitHub, and a third have no usable license
 ```
 
-Prvi komentar (ti ga napišeš takoj po objavi, HN to pričakuje):
+First comment (you post it immediately after; HN expects this):
 
 > I built this after checking what my coding agent had actually installed. It turned out
 > `anthropics/skills` — the official Agent Skills repo, 175k stars — has no LICENSE file at all,
@@ -64,32 +66,34 @@ Prvi komentar (ti ga napišeš takoj po objavi, HN to pričakuje):
 >
 > Not legal advice, and I'd genuinely like to know where the license table is wrong.
 
-**Pravila, ki odločajo:**
-- Objavi **torek–četrtek, 14:00–16:00 UTC** (16:00–18:00 po našem)
-- **Ne** prosi za glasove, **ne** pošiljaj prijateljem v skupinskem chatu — HN to kaznuje
-- Odgovarjaj na komentarje 2 uri. Hitrost odgovorov je močan signal algoritmu.
-- Če pade pod 10 točk v 1 uri, je mrtvo. Lahko poskusiš znova čez 2–3 tedne z drugim naslovom.
+**Rules that decide the outcome:**
+- Post **Tuesday–Thursday, 14:00–16:00 UTC**
+- Do **not** ask for votes, do **not** blast it to a group chat — HN punishes both
+- Answer comments for two hours. Response speed is a strong algorithmic signal.
+- If it is under 10 points after an hour, it is dead. You can try again in 2–3 weeks with a
+  different title.
 
 ---
 
-## Dan 1 — Reddit (2 uri za HN, ne hkrati)
+## Day 1 — Reddit (two hours after HN, not simultaneously)
 
-**r/selfhosted** in **r/ClaudeAI** sta najpomembnejša. Naslov naj bo podatek, ne reklama:
+**r/selfhosted** and **r/ClaudeAI** matter most. The title should be a finding, not an advert:
 
 ```
 I checked 22,678 agent-skills repos on GitHub for license compliance. 16% have no license at all.
 ```
 
-Telo: kratka tabela s številkami + ena vrstica `npx skillcheck check owner/repo` + link.
-Brez "please star". Moderatorji to brišejo, uporabniki pa reportajo.
+Body: short table with the numbers + one line of `npx skillcheck check owner/repo` + link.
+No "please star". Moderators delete that, and users report it.
 
-Dodatno: **r/opensource**, **r/programming** (težje), **r/ChatGPTCoding**.
+Also: **r/opensource**, **r/programming** (harder), **r/ChatGPTCoding**.
 
 ---
 
-## Dan 2 — X / Twitter
+## Day 2 — X / Twitter
 
-Tukaj je AI-agent občinstvo najgosteje. Objavi **thread s sliko terminala**, ne samo besedila:
+This is where the AI-agent audience is densest. Post a **thread with a terminal screenshot**, not
+just text:
 
 > 1/ Your coding agent has 14 skills installed. Can you name the license on any of them?
 >
@@ -105,18 +109,18 @@ Tukaj je AI-agent občinstvo najgosteje. Objavi **thread s sliko terminala**, ne
 > 5/ It resolves SPDX expressions properly — "MIT OR AGPL-3.0" means you get to choose,
 >    "MIT AND AGPL-3.0" means you don't.
 
-Označi (ne spamaj) `@AnthropicAI` in avtorje večjih skill repozitorijev **samo če** imaš nekaj
-konkretnega za povedati o njihovem repu.
+Tag (do not spam) `@AnthropicAI` and authors of larger skill repos **only if** you have something
+specific to say about their repo.
 
 ---
 
-## Dan 3–7 — "You're missing a LICENSE" kampanja
+## Days 3–7 — the "you're missing a LICENSE" campaign
 
-To je tisto, kar dejansko naredi val. In je hkrati res koristno.
+This is what actually creates the wave. And it is genuinely useful at the same time.
 
-1. Poženi `npm run registry:build -- --fast` in vzemi 10 repojev z `verdict: "fail"`
-   (trenutno 10 vnosov, `category: none`).
-2. Odpri **vljuden** issue na vsakem:
+1. Run `npm run registry:build -- --fast` and take 10 repos with `verdict: "fail"`
+   (currently 10 entries, `category: none`).
+2. Open a **polite** issue on each:
 
    > Hi — I ran a license check over the agent-skills ecosystem and noticed this repo has no
    > `LICENSE` file. Without one, GitHub's default applies and everything is all-rights-reserved,
@@ -127,52 +131,55 @@ To je tisto, kar dejansko naredi val. In je hkrati res koristno.
    > (I built the checker: <link>. No affiliation, and sorry if this is noise — I've filed these
    > as one batch and I'll close them if they're unwanted.)
 
-3. **Pošlji PR z LICENSE datoteko**, ne samo issue-a. Konverzija je 5× višja.
-4. Vsak tak PR = en človek, ki izve za orodje, in en repo, ki je zdaj legitimen. To je prava
-   vrednost, ne samo marketing.
+3. **Send the PR with the LICENSE file**, not just an issue. Conversion is roughly 5× higher.
+4. Each PR is one person who learns about the tool, and one repo that is now legitimate. That is
+   the real value here, not just marketing.
 
-⚠️ **Ne spamaj.** Max 10 na dan, vsak ročno preveri, in takoj zapri, če kdo reče ne.
-
----
-
-## Teden 2 — Vsebina (najboljši dolgoročni kanal)
-
-Napiši članek: **"38% of agent skills have no usable license"**.
-Objavi na `dev.to` + `Hacker Noon` + svoj blog.
-
-Zakaj to deluje bolje kot launch post:
-- Iskalniki ga najdejo še leta
-- Imaš **originalne podatke**, ki jih nihče drug nima
-- Vsak, ki ga citira, ti naredi backlink
-
-Dodaj **badge** na konec — avtorji ga kopirajo v svoje README-je, kar je organska distribucija.
+⚠️ **Do not spam.** Max 10 per day, review each one by hand, and close immediately if anyone says
+no.
 
 ---
 
-## Teden 2–3 — Product Hunt
+## Week 2 — content (the best long-term channel)
 
-Manj pomembno za dev orodja kot ljudje mislijo, ampak brezplačno.
-Pripravi GIF terminala (ne statične slike) in 60-sekundni opis.
+Write the article: **"38% of agent skills have no usable license"**.
+Publish on `dev.to` + `Hacker Noon` + your own blog.
+
+Why this works better than a launch post:
+- Search engines keep finding it for years
+- You have **original data** nobody else has
+- Everyone who cites it gives you a backlink
+
+Put the **badge** at the end — authors copy it into their READMEs, which is organic distribution.
 
 ---
 
-## Kaj meriti
+## Weeks 2–3 — Product Hunt
 
-| Metrika | Kje | Realno po 1 mesecu |
+Less important for dev tools than people think, but free.
+Prepare a terminal GIF (not a static image) and a 60-second description.
+
+---
+
+## What to measure
+
+| Metric | Where | Realistic after 1 month |
 |---|---|---|
-| GitHub ⭐ | repo | 100–800 če HN uspe, 20–60 če ne |
-| npm prenosi/teden | npmjs.com | 50–500 |
-| Issue-i od avtorjev | GitHub | najbolj dragocen signal |
-| PR-ji z novimi licencami | GitHub | pomeni, da ljudje uporabljajo tabelo |
+| GitHub ★ | repo | 100–800 if HN lands, 20–60 if it doesn't |
+| npm downloads/week | npmjs.com | 50–500 |
+| Issues from authors | GitHub | the most valuable signal |
+| PRs adding licenses | GitHub | means people are using the table |
 
-**Ne glej zvezdic dnevno.** Gledaj, ali ti kdo odpre issue. To pomeni, da nekdo uporablja.
+**Do not check stars daily.** Check whether anyone opened an issue. That means someone is using it.
 
 ---
 
-## Najpogostejši razlogi, da tak projekt umre
+## The most common reasons a project like this dies
 
-1. **Brez distribucije.** Koda ni problem. Ti si problem, če ne objaviš.
-2. **README brez GIF-a.** Ljudje morajo *videti* output v 2 sekundah.
-3. **Issue brez odgovora 3 dni.** Prvih 10 ljudi, ki ti pišejo, odloči, ali bo skupnost.
-4. **Zastaran register.** Zato ima `registry.yml` cron. Preveri po prvem ponedeljku, da je tekel.
-5. **Iskanje perfekcije namesto objave.** Objavi zdaj, popravi naslednji teden.
+1. **No distribution.** The code is not the problem. You are, if you don't post.
+2. **A README with no GIF.** People need to *see* the output in two seconds.
+3. **An issue left unanswered for three days.** The first ten people who write to you decide
+   whether there is a community.
+4. **A stale registry.** That is why `registry.yml` has a cron. Check after the first Monday that
+   it actually ran.
+5. **Waiting for perfect instead of shipping.** Ship now, fix next week.

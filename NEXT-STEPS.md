@@ -1,29 +1,29 @@
-# Kaj moraš narediti ti (jaz tega ne morem)
+# What you need to do (I cannot do this part)
 
-Sandbox, v katerem sem zgradil projekt, nima GitHub kredencialov — preveril sem:
-`gh` ni nameščen in ni nobenega tokena. Zato je repo narejen lokalno in ga moraš pushati sam.
+The sandbox this was built in has no GitHub credentials — verified: `gh` is not installed and there
+is no token. So the repo exists locally and you have to push it yourself.
 
-Celotna koda je v `~/skillcheck`. Vse je preverjeno: 78 testov, typecheck, build, in CLI teče
-proti pravim GitHub repozitorijem.
+All the code is in `~/skillcheck`. Everything is verified: 78 tests, typecheck, build, and the CLI
+runs against real GitHub repositories.
 
 ---
 
-## 1. Ustvari prazen repo na GitHubu
+## 1. Create an empty repo on GitHub
 
-Na github.com → New repository → ime `skillcheck` → **brez** README, brez .gitignore, brez licence
-(vse to že imam, sicer bo konflikt pri prvem pushu).
+github.com → New repository → name it `skillcheck` → **no** README, no `.gitignore`, no license
+(all three already exist here, otherwise you get a conflict on the first push).
 
-## 2. Preimenuj placeholder slug
+## 2. Rename the placeholder slug
 
-Vse kaže na `github.com/skillcheck/skillcheck`. Zamenjaj s svojim:
+Everything currently points at `github.com/skillcheck/skillcheck`. Repoint it at your own:
 
 ```bash
 cd ~/skillcheck
-./scripts/set-repo.sh <tvoj-github-user>/skillcheck
+./scripts/set-repo.sh <your-github-user>/skillcheck
 ```
 
-Skripta popravi `package.json`, `README.md`, `CONTRIBUTING.md`, `src/index.ts` in `src/output.ts`.
-Je idempotentna in jo lahko poženeš večkrat.
+The script updates `package.json`, `README.md`, `CONTRIBUTING.md`, `src/index.ts` and
+`src/output.ts`. It is idempotent, so running it twice is harmless.
 
 ## 3. Push
 
@@ -32,64 +32,69 @@ cd ~/skillcheck
 git add -A
 git commit -m "skillcheck: license + spec checker for agent skills"
 git branch -M main
-git remote add origin git@github.com:<tvoj-github-user>/skillcheck.git
+git remote add origin git@github.com:<your-github-user>/skillcheck.git
 git push -u origin main
 ```
 
-Če `git` v sandboxu nima tvojih ključev, naredi push iz svojega računalnika — sandbox mapa je
-vidna v workspace panelu, lahko jo tudi preneseš.
+If `git` in the sandbox does not have your keys, push from your own machine — the folder is visible
+in the workspace panel and can be downloaded.
 
-## 4. Objavi na npm
+## 4. Publish to npm
 
-Ime `skillcheck` je prosto (preveril sem: `skill-check`, `skillrank` in `skillscan` so zasedeni).
+The name `skillcheck` is free (verified: `skill-check`, `skillrank` and `skillscan` are all taken).
 
 ```bash
 npm login
 npm publish --access public
 ```
 
-`prepublishOnly` avtomatsko požene build. Po objavi preveri, da dela:
+`prepublishOnly` runs the build automatically. After publishing, confirm it works end to end:
 
 ```bash
 npx skillcheck check obra/superpowers
 ```
 
-## 5. Dodaj GitHub topics
+## 5. Add GitHub topics
 
-To je SEO na GitHubu in res vpliva na to, kdo te najde:
+This is SEO inside GitHub and it genuinely affects who finds you:
 
 ```
 agent-skills  claude-skills  license  spdx  compliance  cli
 security  claude-code  cursor  codex  opencode  llm  devtools
 ```
 
-## 6. Preveri, da CI teče
+## 6. Confirm CI ran
 
-Po pushu odpri **Actions** in poglej, ali sta `CI` in `Registry` zelena.
-`Registry` ima cron ob ponedeljkih 04:17 UTC — po prvem ponedeljku preveri, da se je
-`data/registry.ts` res posodobil. To je tisto, kar projekt loči od zastarane awesome-liste.
+After the push, open **Actions** and check that `CI` and `Registry` are green.
+`Registry` is on a cron for Mondays 04:17 UTC — after the first Monday, verify that
+`data/registry.ts` actually changed. That job is what separates this project from a stale
+awesome-list.
 
 ---
 
-## Znane omejitve (namerno, ne hrošči)
+## Known limitations (deliberate, not bugs)
 
-- **Register je vzorec, ne popis.** 166 vnosov = top repozitoriji po zvezdicah iz dveh topic
-  oznak, ne vseh 22.678. V README je to jasno napisano. Za več dvigni `perPage`/`MAX_ENTRIES`
-  v `scripts/build-registry.ts` — omejitev je GitHub rate limit, zato rabiš token.
-- **`--fast` ne loči "brez licence" od "custom licence".** GitHub vrne `license: null` za oboje.
-  Zato CI teče v verified načinu s tokenom. `verdict` v fast načinu je zato konservativen.
-- **Lokalni `check` prepozna le ~10 najpogostejših licenc** iz besedila (`src/license-sniff.ts`).
-  Kar ne prepozna, vrne `null` → orodje reče "needs review", nikoli "safe". To je namerno.
-- **Ni security scanninga.** To počne `NVIDIA/SkillSpector`. Ne podvajaj.
-- **Ni installerja.** To počne `vercel-labs/skills`. Ne podvajaj.
+- **The registry is a sample, not a census.** 166 entries = the top repos by stars across two topic
+  tags, not all 22,678. The README says so plainly. To widen it, raise `perPage` / `MAX_ENTRIES` in
+  `scripts/build-registry.ts` — the constraint is the GitHub rate limit, so you need a token.
+- **`--fast` cannot tell "no license" from "custom license".** GitHub returns `license: null` for
+  both. That is why CI runs in verified mode with a token. Verdicts from fast mode are conservative
+  as a result.
+- **The local `check` only recognises ~10 common licenses** from text (`src/license-sniff.ts`).
+  Anything it does not recognise returns `null`, which makes the tool say "needs review", never
+  "safe". That is intentional.
+- **No security scanning.** `NVIDIA/SkillSpector` does that. Do not duplicate it.
+- **No installer.** `vercel-labs/skills` does that. Do not duplicate it.
 
-## Ideje za naprej (po vrsti vrednosti)
+## Ideas for later, in order of value
 
-1. **Badge API** — trenutno je badge statičen (generated ob checku). Pravi live badge rabi
-   serverless funkcijo; GitHub Pages + Actions lahko to naredi brezplačno.
-2. **`skillcheck why <repo>`** — razčleni, zakaj je nekaj padlo, z linki na točne vrstice.
-3. **GitHub Action kot pravi marketplace action** (`uses: skillcheck/action@v1`) namesto
-   `npx` koraka. Veliko nižji prag za uporabo v CI.
-4. **PR bot** — avtomatsko odpri PR z LICENSE datoteko na repozitorijih brez nje. To je
-   tisto, kar naredi projekt znan; glej `LAUNCH-PLAN.md`, dan 3–7.
-5. **Več licenc v tabeli** — vsak PR, ki doda licenco, je dragocen. Trenutno jih je ~30 vzorcev.
+1. **A live badge API** — the badge is currently static (generated when you run `check`). A real
+   live badge needs a serverless function; GitHub Pages plus Actions can do it for free.
+2. **`skillcheck why <repo>`** — break down exactly why something failed, with links to specific
+   lines.
+3. **A real marketplace GitHub Action** (`uses: skillcheck/action@v1`) instead of an `npx` step.
+   Much lower friction to adopt in CI.
+4. **A PR bot** that automatically opens a PR adding a LICENSE file to repos without one. This is
+   what makes the project known; see `LAUNCH-PLAN.md`, days 3–7.
+5. **More licenses in the table** — every PR that adds one is valuable. There are about 30 patterns
+   today.
