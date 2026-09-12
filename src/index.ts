@@ -59,7 +59,7 @@ ${c.bold("EXIT CODES")}
   1  review    a human should read the license
   2  fail      missing license, or SKILL.md breaks the spec
 
-Docs: https://github.com/skillcheck/skillcheck
+Docs: https://github.com/Vortexeddev/skillcheck
 `;
 
 interface Args {

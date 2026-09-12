@@ -6,7 +6,7 @@ table, a spec rule we do not enforce, a false positive that made someone's CI re
 ## Setup
 
 ```bash
-git clone https://github.com/skillcheck/skillcheck
+git clone https://github.com/Vortexeddev/skillcheck
 cd skillcheck
 npm install
 npm test

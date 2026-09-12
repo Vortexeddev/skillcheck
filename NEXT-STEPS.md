@@ -15,7 +15,7 @@ github.com → New repository → name it `skillcheck` → **no** README, no `.g
 
 ## 2. Rename the placeholder slug
 
-Everything currently points at `github.com/skillcheck/skillcheck`. Repoint it at your own:
+Everything currently points at `github.com/Vortexeddev/skillcheck`. Repoint it at your own:
 
 ```bash
 cd ~/skillcheck

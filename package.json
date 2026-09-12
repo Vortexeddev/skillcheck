@@ -20,9 +20,9 @@
   "author": "skillcheck contributors",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/skillcheck/skillcheck.git"
+    "url": "git+https://github.com/Vortexeddev/skillcheck.git"
   },
-  "homepage": "https://github.com/skillcheck/skillcheck#readme",
+  "homepage": "https://github.com/Vortexeddev/skillcheck#readme",
   "type": "module",
   "bin": {
     "skillcheck": "dist/index.js"

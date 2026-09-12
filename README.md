@@ -47,7 +47,7 @@ npx skillcheck check owner/repo
 
 [![npm version](https://img.shields.io/npm/v/skillcheck.svg)](https://www.npmjs.com/package/skillcheck)
 [![license MIT](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
-[![tests](https://img.shields.io/badge/tests-78%20passing-brightgreen.svg)](https://github.com/skillcheck/skillcheck/actions/workflows/ci.yml)
+[![tests](https://img.shields.io/badge/tests-78%20passing-brightgreen.svg)](https://github.com/Vortexeddev/skillcheck/actions/workflows/ci.yml)
 [![zero deps](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](#why-zero-dependencies)
 [![Node 18+](https://img.shields.io/badge/node-18%2B-blue.svg)](#install)
 
@@ -171,7 +171,7 @@ npx skillcheck badge owner/repo
 ```
 
 ```markdown
-[![skillcheck: SAFE TO SHIP](https://img.shields.io/badge/skillcheck-SAFE%20TO%20SHIP-brightgreen)](https://github.com/skillcheck/skillcheck#verdicts)
+[![skillcheck: SAFE TO SHIP](https://img.shields.io/badge/skillcheck-SAFE%20TO%20SHIP-brightgreen)](https://github.com/Vortexeddev/skillcheck#verdicts)
 ```
 
 ## The registry is generated, not curated
@@ -221,7 +221,7 @@ security-scan.
 Missing a license in the table? A spec rule we do not enforce? Those are the highest-value PRs.
 
 ```bash
-git clone https://github.com/skillcheck/skillcheck
+git clone https://github.com/Vortexeddev/skillcheck
 cd skillcheck && npm install && npm test
 ```
 

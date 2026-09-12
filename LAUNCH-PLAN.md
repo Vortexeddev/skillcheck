@@ -23,10 +23,10 @@ allow you to do."*
 
 ## Before launch (yours to do — I cannot)
 
-- [ ] **Create the GitHub repo** `skillcheck/skillcheck` (or `<your-user>/skillcheck`)
+- [ ] **Create the GitHub repo** `Vortexeddev/skillcheck` (or `<your-user>/skillcheck`)
 - [ ] **Push the code** — exact commands in `NEXT-STEPS.md`
 - [ ] **Replace the placeholder URLs**: `README.md`, `package.json` (`repository`, `homepage`),
-      `CONTRIBUTING.md` and `src/output.ts` (badge link) all say `github.com/skillcheck/skillcheck`.
+      `CONTRIBUTING.md` and `src/output.ts` (badge link) all say `github.com/Vortexeddev/skillcheck`.
       `./scripts/set-repo.sh <your-user>/skillcheck` fixes all of them at once.
 - [ ] **`npm publish`** — needs your npm account: `npm login && npm publish --access public`
       (the name `skillcheck` is free, verified)

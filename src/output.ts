@@ -114,13 +114,13 @@ export function renderBadgeMarkdown(report: SkillCheckReport): string {
   const label = VERDICT_LABEL[report.verdict].replace(/ /g, "%20");
   const color = { pass: "brightgreen", review: "yellow", fail: "red" }[report.verdict];
   const slug = report.repo.replace(/-/g, "--").replace(/\//g, "-");
-  return `[![skillcheck: ${VERDICT_LABEL[report.verdict]}](https://img.shields.io/badge/skillcheck-${label}-${color})](https://github.com/skillcheck/skillcheck#verdicts)`;
+  return `[![skillcheck: ${VERDICT_LABEL[report.verdict]}](https://img.shields.io/badge/skillcheck-${label}-${color})](https://github.com/Vortexeddev/skillcheck#verdicts)`;
 }
 
 export function renderRegistry(entries: RegistryEntry[], query?: string): string {
   if (entries.length === 0) {
     return "\n  No skills matched. Try a broader query, or add yours:\n" +
-      "  https://github.com/skillcheck/skillcheck/blob/main/CONTRIBUTING.md\n";
+      "  https://github.com/Vortexeddev/skillcheck/blob/main/CONTRIBUTING.md\n";
   }
 
   const rows = entries.map((e) => {
@@ -154,7 +154,7 @@ export function renderRegistry(entries: RegistryEntry[], query?: string): string
   out.push("");
   out.push(
     c.dim(
-      `  ${entries.length} entr(ies). Full list: https://github.com/skillcheck/skillcheck#registry`,
+      `  ${entries.length} entr(ies). Full list: https://github.com/Vortexeddev/skillcheck#registry`,
     ),
   );
   out.push(c.dim("  Check any repo yourself:  npx skillcheck check owner/repo"));
