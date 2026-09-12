@@ -69,6 +69,14 @@ async function gh<T>(path: string, init?: RequestInit): Promise<T> {
       res.status,
     );
   }
+  if (res.status === 404) {
+    throw new GitHubError(
+      `Repository not found: ${url}\n` +
+        "  Check the spelling, or the repo may be private. For a private repo, set " +
+        "GITHUB_TOKEN first.",
+      404,
+    );
+  }
   if (!res.ok) {
     throw new GitHubError(`GitHub API error ${res.status} for ${url}`, res.status);
   }
