@@ -1,7 +1,7 @@
 /**
  * skillcheck — can you legally ship this agent skill?
  *
- * Zero runtime dependencies on purpose: `npx skillcheck` should cost the user
+ * Zero runtime dependencies on purpose: `npx @vortexeddev/skillcheck` should cost the user
  * almost nothing to try.
  */
 
@@ -37,10 +37,10 @@ const REGISTRY = REGISTRY_DATA as unknown as RegistryFile;
 const HELP = `${c.bold("skillcheck")} — can you legally ship this agent skill?
 
 ${c.bold("USAGE")}
-  npx skillcheck check <owner/repo | url | ./path>   Analyse a skill repo
-  npx skillcheck top [query]                         Browse verified, commercially-safe skills
-  npx skillcheck badge <owner/repo>                  Print a README badge for your skill
-  npx skillcheck license <spdx-expression>           Explain a license in plain terms
+  npx @vortexeddev/skillcheck check <owner/repo | url | ./path>   Analyse a skill repo
+  npx @vortexeddev/skillcheck top [query]                         Browse verified, commercially-safe skills
+  npx @vortexeddev/skillcheck badge <owner/repo>                  Print a README badge for your skill
+  npx @vortexeddev/skillcheck license <spdx-expression>           Explain a license in plain terms
 
 ${c.bold("OPTIONS")}
   --json          Machine-readable output (CI friendly)
@@ -49,10 +49,10 @@ ${c.bold("OPTIONS")}
   -v, --version   Print version
 
 ${c.bold("EXAMPLES")}
-  npx skillcheck check anthropics/skills
-  npx skillcheck check https://github.com/obra/superpowers
-  npx skillcheck top pdf
-  npx skillcheck license "AGPL-3.0-only"
+  npx @vortexeddev/skillcheck check anthropics/skills
+  npx @vortexeddev/skillcheck check https://github.com/obra/superpowers
+  npx @vortexeddev/skillcheck top pdf
+  npx @vortexeddev/skillcheck license "AGPL-3.0-only"
 
 ${c.bold("EXIT CODES")}
   0  pass     safe for commercial use
@@ -131,7 +131,7 @@ function version(): string {
 async function runCheck(args: Args): Promise<number> {
   const target = args.positional[0];
   if (!target) {
-    process.stderr.write("Usage: npx skillcheck check <owner/repo | url | ./path>\n");
+    process.stderr.write("Usage: npx @vortexeddev/skillcheck check <owner/repo | url | ./path>\n");
     return 64;
   }
 
@@ -366,7 +366,7 @@ function runTop(args: Args): number {
 async function runBadge(args: Args): Promise<number> {
   const target = args.positional[0];
   if (!target) {
-    process.stderr.write("Usage: npx skillcheck badge <owner/repo>\n");
+    process.stderr.write("Usage: npx @vortexeddev/skillcheck badge <owner/repo>\n");
     return 64;
   }
   const repo = parseRepoInput(target);
@@ -387,7 +387,7 @@ async function runBadge(args: Args): Promise<number> {
 function runLicense(args: Args): number {
   const expression = args.positional.join(" ");
   if (!expression) {
-    process.stderr.write("Usage: npx skillcheck license <spdx-expression>\n");
+    process.stderr.write("Usage: npx @vortexeddev/skillcheck license <spdx-expression>\n");
     return 64;
   }
 

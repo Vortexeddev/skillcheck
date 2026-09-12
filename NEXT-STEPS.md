@@ -51,7 +51,7 @@ npm publish --access public
 `prepublishOnly` runs the build automatically. After publishing, confirm it works end to end:
 
 ```bash
-npx skillcheck check obra/superpowers
+npx @vortexeddev/skillcheck check obra/superpowers
 ```
 
 ## 5. Add GitHub topics

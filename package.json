@@ -1,5 +1,5 @@
 {
-  "name": "skillcheck",
+  "name": "@vortexeddev/skillcheck",
   "version": "0.1.0",
   "description": "Can you legally ship this agent skill? License + spec checker for the 22,000+ SKILL.md repos out there.",
   "keywords": [

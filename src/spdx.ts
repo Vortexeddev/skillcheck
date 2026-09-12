@@ -1,7 +1,7 @@
 /**
  * A small, dependency-free SPDX license expression parser and classifier.
  *
- * We deliberately do NOT pull in a full SPDX library: `npx skillcheck` must stay
+ * We deliberately do NOT pull in a full SPDX library: `npx @vortexeddev/skillcheck` must stay
  * a single tiny download. The expression grammar we support covers everything that
  * appears in real SKILL.md repos:
  *

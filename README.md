@@ -11,7 +11,7 @@
 <td width="50%">
 
 ```
-$ npx skillcheck check obra/superpowers
+$ npx @vortexeddev/skillcheck check obra/superpowers
 ```
 
 <img src="docs/assets/demo-pass.gif" alt="skillcheck says SAFE TO SHIP for obra/superpowers" width="100%">
@@ -22,7 +22,7 @@ $ npx skillcheck check obra/superpowers
 <td width="50%">
 
 ```
-$ npx skillcheck check anthropics/skills
+$ npx @vortexeddev/skillcheck check anthropics/skills
 ```
 
 <img src="docs/assets/demo-fail.gif" alt="skillcheck says DO NOT SHIP for anthropics/skills" width="100%">
@@ -40,12 +40,12 @@ modify, redistribute or sell anything in it, even though it is public on GitHub.
 It is not alone. This tool checks before you find out.
 
 ```bash
-npx skillcheck check owner/repo
+npx @vortexeddev/skillcheck check owner/repo
 ```
 
 <div align="center">
 
-[![npm version](https://img.shields.io/npm/v/skillcheck.svg)](https://www.npmjs.com/package/skillcheck)
+[![npm version](https://img.shields.io/npm/v/@vortexeddev/skillcheck.svg)](https://www.npmjs.com/package/@vortexeddev/skillcheck)
 [![license MIT](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
 [![tests](https://img.shields.io/badge/tests-78%20passing-brightgreen.svg)](https://github.com/Vortexeddev/skillcheck/actions/workflows/ci.yml)
 [![zero deps](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](#why-zero-dependencies)
@@ -88,7 +88,7 @@ The popular end is mostly fine. **The long tail is not.** A sample of the 100 mo
 
 ## How it works
 
-<img src="docs/assets/flow.svg" alt="Flow: find a repo, run npx skillcheck check owner/repo, skillcheck asks GitHub about license, spec and health, then verdicts SAFE TO SHIP, NEEDS REVIEW or DO NOT SHIP" width="100%">
+<img src="docs/assets/flow.svg" alt="Flow: find a repo, run npx @vortexeddev/skillcheck check owner/repo, skillcheck asks GitHub about license, spec and health, then verdicts SAFE TO SHIP, NEEDS REVIEW or DO NOT SHIP" width="100%">
 
 Seven free API calls, no account, no key. The LICENSE question takes two calls, because GitHub
 reports `license: null` for **both** "no license" and "a license we could not classify" — and those
@@ -102,19 +102,19 @@ tell them apart.
 Nothing to install. Requires Node 18+.
 
 ```bash
-npx skillcheck check owner/repo
+npx @vortexeddev/skillcheck check owner/repo
 ```
 
-Or globally: `npm i -g skillcheck`
+Or globally: `npm i -g @vortexeddev/skillcheck`
 
 ## Commands
 
 ```bash
-npx skillcheck check owner/repo        # GitHub repo (shorthand, URL or SSH remote)
-npx skillcheck check ./my-skill        # local checkout, fully offline
-npx skillcheck top [query]             # browse safe-to-ship skills, offline
-npx skillcheck license "MIT OR AGPL-3.0-only"   # explain an expression
-npx skillcheck badge owner/repo        # README badge for your own skill
+npx @vortexeddev/skillcheck check owner/repo        # GitHub repo (shorthand, URL or SSH remote)
+npx @vortexeddev/skillcheck check ./my-skill        # local checkout, fully offline
+npx @vortexeddev/skillcheck top [query]             # browse safe-to-ship skills, offline
+npx @vortexeddev/skillcheck license "MIT OR AGPL-3.0-only"   # explain an expression
+npx @vortexeddev/skillcheck badge owner/repo        # README badge for your own skill
 ```
 
 ## Verdicts
@@ -141,8 +141,8 @@ Exit codes are deliberate, so CI can gate on them.
 ### How expressions resolve
 
 ```bash
-$ npx skillcheck license "MIT OR AGPL-3.0-only"     # OR  → you may choose; we still show both
-$ npx skillcheck license "MIT AND WeirdCorp-1.0"    # AND → worst branch wins
+$ npx @vortexeddev/skillcheck license "MIT OR AGPL-3.0-only"     # OR  → you may choose; we still show both
+$ npx @vortexeddev/skillcheck license "MIT AND WeirdCorp-1.0"    # AND → worst branch wins
 ```
 
 False alarms cost a minute. A missed AGPL costs a product, so the tool is conservative by design:
@@ -161,13 +161,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 20 }
-      - run: npx --yes skillcheck check . --json   # warn on review, fail on missing license
+      - run: npx --yes @vortexeddev/skillcheck check . --json   # warn on review, fail on missing license
 ```
 
 ## Badge
 
 ```bash
-npx skillcheck badge owner/repo
+npx @vortexeddev/skillcheck badge owner/repo
 ```
 
 ```markdown
@@ -191,7 +191,7 @@ curated collections) are filtered out automatically — they are indexes, not th
 
 ## Why zero dependencies
 
-`npx skillcheck` should cost you almost nothing to try. No `node_modules`, no lockfile drift, no
+`npx @vortexeddev/skillcheck` should cost you almost nothing to try. No `node_modules`, no lockfile drift, no
 transitive supply chain — a slightly load-bearing claim for a tool whose job is deciding whether
 you can trust a file an AI agent will execute.
 

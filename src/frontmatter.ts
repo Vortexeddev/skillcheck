@@ -29,7 +29,7 @@ export interface ParsedSkillFile {
  *
  * We only need flat `key: value` pairs plus the `metadata:` mapping, which is what
  * the spec allows. Pulling in a full YAML parser would triple the install size of
- * `npx skillcheck` for no practical gain. Nested structures we do not understand
+ * `npx @vortexeddev/skillcheck` for no practical gain. Nested structures we do not understand
  * are preserved as raw text so nothing is silently dropped.
  */
 export function parseFrontmatter(source: string): ParsedSkillFile {

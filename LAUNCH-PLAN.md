@@ -83,7 +83,7 @@ First comment (you post it immediately after; HN expects this):
 I checked 22,678 agent-skills repos on GitHub for license compliance. 16% have no license at all.
 ```
 
-Body: short table with the numbers + one line of `npx skillcheck check owner/repo` + link.
+Body: short table with the numbers + one line of `npx @vortexeddev/skillcheck check owner/repo` + link.
 No "please star". Moderators delete that, and users report it.
 
 Also: **r/opensource**, **r/programming** (harder), **r/ChatGPTCoding**.
@@ -103,7 +103,7 @@ just text:
 > 3/ Of the 100 most recently updated `agent-skills` repos: 46% MIT, 17% no license,
 >    21% unclassifiable.
 >
-> 4/ Built a checker: `npx skillcheck check owner/repo`
+> 4/ Built a checker: `npx @vortexeddev/skillcheck check owner/repo`
 >    [screenshot]
 >
 > 5/ It resolves SPDX expressions properly — "MIT OR AGPL-3.0" means you get to choose,

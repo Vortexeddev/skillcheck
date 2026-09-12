@@ -1,5 +1,5 @@
 /**
- * Terminal rendering. No chalk: we hand-roll ANSI so `npx skillcheck` stays tiny
+ * Terminal rendering. No chalk: we hand-roll ANSI so `npx @vortexeddev/skillcheck` stays tiny
  * and colours degrade correctly when piped or on dumb terminals.
  */
 
@@ -157,7 +157,7 @@ export function renderRegistry(entries: RegistryEntry[], query?: string): string
       `  ${entries.length} entr(ies). Full list: https://github.com/Vortexeddev/skillcheck#registry`,
     ),
   );
-  out.push(c.dim("  Check any repo yourself:  npx skillcheck check owner/repo"));
+  out.push(c.dim("  Check any repo yourself:  npx @vortexeddev/skillcheck check owner/repo"));
   out.push("");
   return out.join("\n");
 }
